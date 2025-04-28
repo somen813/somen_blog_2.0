@@ -1,0 +1,5 @@
+サイト構成ルール
+1.headerとfooterに含まれるものはすべて絶対パス
+3.「.htaccess」は絶対に消さないこと
+4.htmlのファイル名は「index.html」にする
+5.URLの「index.html」は入れる
