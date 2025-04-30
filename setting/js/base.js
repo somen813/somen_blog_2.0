@@ -1,69 +1,26 @@
 const nowURL = window.location.href;
 //headerのスクリプト
 const content = document.querySelector('.content');
-const contentHeader =
-`<header class="header">
-	<p class="siteLogo">
-		<a href="/index.html">
-			<img src="/image/logo-transparent.png" alt="そうめんの部屋" class="logo-img" width="500" height="150">
-		</a>
-	</p>
-	<button type="button" class="headerMenuBtn">
-		<div class="lineBox">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</button>
-	<nav id="headerMenu">
-		<div id="headerMenuList">
-			<ul class="backgroundAnimation">
-				<li><a href="/pjsk/index.html">プロセカ</a></li>
-				<li><a href="/blak/index.html">ブルアカ</a></li>
-				<li><a href="/rvc/index.html">RVC</a></li>
-				<li><a href="/gadget/index.html">ガジェット・PC</a></li>
-				<li><a href="/other/index.html">その他</a></li>
-			</ul>
-		</div>
-		<ul class="noticeContact backgroundAnimation">
-			<li><a href="/info/index.html">お知らせ</a></li>
-			<li><a href="/introduction/index.html">自己紹介</a></li>
-			<li><a href="/contact/index.html">お問い合わせ</a></li>
-		</ul>
-	</nav>
-</header>
-<div class="progressBar"></div>
-<div class="share">
-	<button type="button" class="shareMenuBtn"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
-	<div class="shareMenu">
-		<div class="shareSns shareX">
-			<a href="https://x.com/share?url=${nowURL}" rel="nofollow noopener" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-		</div>
-		<div class="shareSns shareFacebook">
-			<a href="http://www.facebook.com/share.php?u=${nowURL}" rel="nofollow noopener" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-		</div>
-		<div class="shareSns shareLine">
-			<a href="https://social-plugins.line.me/lineit/share?url=${nowURL}" rel="nofollow noopener" target="_blank"><img src="/image/LINE_Brand_icon.png" alt="LINE"></a>
-		</div>
-	</div>
-</div>
-`;
-//footerのスクリプト
-const contentFooter = 
-`<footer class="footer">
-  <ul class="site-map">
-    <li><a href="/info/index.html">お知らせ</a></li>
-    <li><a href="/contact/index.html">お問い合わせ</a></li>
-  </ul>
-  <p class="footerTitle">
-    <a href="/index.html"><img src="/image/logo-transparent.png" alt="そうめんの部屋" width="500" height="150"  class="footerTitle"></a>
-  </p>
-</footer>
-<div class="scrollTop">
-  <a href="#top" class="scroll-top"><i class="fa-solid fa-angles-up"></i></a>
-</div>`;
-content.insertAdjacentHTML('beforebegin', contentHeader);
-content.insertAdjacentHTML('afterend', contentFooter);
+const contentHeader = () => {
+	fetch('common-tags/header.html')
+	.then(response => {
+		return response.text();
+	})
+	.then(data => {
+		content.insertAdjacentHTML('beforebegin', data);
+	})
+}
+const contentFooter = () => {
+	fetch('common-tags/footer.html')
+	.then(response => {
+		return response.text();
+	})
+	.then(data => {
+		content.insertAdjacentHTML('afterend', data);
+	})
+}
+contentHeader();
+contentFooter();
 
 const headerMenuBtn = document.querySelector('.headerMenuBtn');
 const headerMenu = document.querySelector('#headerMenu');
