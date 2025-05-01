@@ -2,7 +2,7 @@ const nowURL = window.location.href;
 //headerのスクリプト
 const content = document.querySelector('.content');
 const contentHeader = () => {
-	fetch('common-tags/header.html')
+	fetch('/common-tags/header.html')
 	.then(response => {
 		return response.text();
 	})
@@ -11,7 +11,7 @@ const contentHeader = () => {
 	})
 }
 const contentFooter = () => {
-	fetch('common-tags/footer.html')
+	fetch('/common-tags/footer.html')
 	.then(response => {
 		return response.text();
 	})
