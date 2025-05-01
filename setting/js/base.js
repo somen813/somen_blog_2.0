@@ -9,6 +9,32 @@ const contentHeader = () => {
 	.then(data => {
 		content.insertAdjacentHTML('beforebegin', data);
 	})
+	.then(() => {
+		const headerMenuBtn = document.querySelector('.headerMenuBtn');
+		const headerMenu = document.querySelector('#headerMenu');
+		headerMenuBtn.addEventListener('click', () => {
+			headerMenuBtn.classList.toggle('headerMenuBtnOpen');
+			headerMenu.classList.toggle('headerMenuOpen');
+		});
+		document.addEventListener('click', (e) => {
+			if(!e.target.closest('.headerMenuBtn') && !e.target.closest('#headerMenu')){
+				headerMenuBtn.classList.remove('headerMenuBtnOpen');
+				headerMenu.classList.remove('headerMenuOpen')
+			}
+		});
+
+		const share = document.querySelector('.share');
+		const shareMenuBtn = document.querySelector('.shareMenuBtn');
+		const shareMenu = document.querySelector('.shareMenu');
+		shareMenuBtn.addEventListener('click', () => {
+			shareMenu.classList.toggle('shareMenuOpen');
+		});
+		document.addEventListener('click', (e) => {
+			if(!e.target.closest('.shareMenuBtn') && !e.target.closest('.shareMenu')){
+				shareMenu.classList.remove('shareMenuOpen');
+			}
+		});
+	})
 }
 const contentFooter = () => {
 	fetch('/common-tags/footer.html')
@@ -22,30 +48,7 @@ const contentFooter = () => {
 contentHeader();
 contentFooter();
 
-const headerMenuBtn = document.querySelector('.headerMenuBtn');
-const headerMenu = document.querySelector('#headerMenu');
-headerMenuBtn.addEventListener('click', () => {
-	headerMenuBtn.classList.toggle('headerMenuBtnOpen');
-	headerMenu.classList.toggle('headerMenuOpen');
-});
-document.addEventListener('click', (e) => {
-	if(!e.target.closest('.headerMenuBtn') && !e.target.closest('#headerMenu')){
-		headerMenuBtn.classList.remove('headerMenuBtnOpen');
-		headerMenu.classList.remove('headerMenuOpen')
-	}
-});
 
-const share = document.querySelector('.share');
-const shareMenuBtn = document.querySelector('.shareMenuBtn');
-const shareMenu = document.querySelector('.shareMenu');
-shareMenuBtn.addEventListener('click', () => {
-	shareMenu.classList.toggle('shareMenuOpen');
-});
-document.addEventListener('click', (e) => {
-	if(!e.target.closest('.shareMenuBtn') && !e.target.closest('.shareMenu')){
-		shareMenu.classList.remove('shareMenuOpen');
-	}
-});
 
 
 const getScrollPercent = () => {
