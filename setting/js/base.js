@@ -22,7 +22,6 @@ const contentHeader = () => {
 				headerMenu.classList.remove('headerMenuOpen')
 			}
 		});
-
 		const share = document.querySelector('.share');
 		const shareMenuBtn = document.querySelector('.shareMenuBtn');
 		const shareMenu = document.querySelector('.shareMenu');
@@ -47,9 +46,6 @@ const contentFooter = () => {
 }
 contentHeader();
 contentFooter();
-
-
-
 
 const getScrollPercent = () => {
 	const scrolled = window.scrollY;
