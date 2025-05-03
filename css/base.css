@@ -180,8 +180,7 @@ html {
 	#headerMenu {
 		/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
 		position: fixed;
-
-/*ナビのスタート位置と形状*/
+		/*ナビのスタート位置と形状*/
 		top: 0;
 		right: -80%;
 		bottom: 0;/*ナビの高さ*/
@@ -193,8 +192,7 @@ html {
 		overflow: hidden;
 		background: var(--header-color_rgb);
 		backdrop-filter: var(--header-color_blur);
-
-/*動き*/
+		/*動き*/
 		transition: right .5s;
 	}
 	#headerMenuList {
@@ -494,8 +492,7 @@ html {
 	#headerMenu {
 		/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
 		position: fixed;
-
-/*ナビのスタート位置と形状*/
+		/*ナビのスタート位置と形状*/
 		top: 0;
 		right: -80%;
 		flex-direction: column;
@@ -506,8 +503,7 @@ html {
 		overflow: hidden;
 		background: var(--header-color_rgb);
 		backdrop-filter: var(--header-color_blur);
-
-/*動き*/
+		/*動き*/
 		transition: right .5s;
 	}
 	@media screen and (min-height: 800px) {
