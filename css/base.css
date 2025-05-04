@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*共通部分はすべてスマホ基準とする*/
 /*css変数の指定*/
 :root {
 	--header-color: #387bb2;
@@ -44,7 +45,7 @@ img {
 }
 .content {
 	flex: 1;
-	width: 94%;
+	width: 100%;
 	max-width: 900px;
 	margin: auto;
 }
@@ -79,6 +80,270 @@ html {
 	background-clip: content-box;
 	background-color: gray;
 }
+body {
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	min-height: calc( 100vh - var(--headerHeight));
+	padding: var(--headerHeight) 0 0 0;
+	margin: 0;
+	background-color: var(--body-color);
+	font-size: 18px;
+	font-family: var(--base-fonts);
+}
+.header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: var(--headerHeight);
+	padding: 0;
+	background-color: var(--header-color);
+	color: white;
+}
+.siteLogo {
+	display: block;
+	width: fit-content;
+	height: var(--headerHeight);
+	margin: auto;
+}
+.siteLogo img {
+	width: auto;
+	height: 100%;
+}
+/*アクティブクラスがついたら位置を0に*/
+#headerMenu.headerMenuOpen {
+	right: 0;
+}
+/*ボタンのためのCSS*/
+.headerMenuBtn {
+	position: fixed;
+	inset: 5px 5px auto auto;
+	display: block;
+	z-index: 1500;
+	height: calc(var(--headerHeight) - 10px);
+	aspect-ratio: 1/1;
+	padding: 0;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--header-color);
+	cursor: pointer;
+	transition: background-color .5s;
+}
+.lineBox {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50% , -50%);
+	width: 50%;
+	height: 50%;
+}
+/*×に変化*/
+.headerMenuBtn span {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 12%;
+	margin: auto;
+	background-color: white;
+	transition: all .3s;
+}
+.headerMenuBtn span:nth-of-type(1) {
+	top: 0;
+}
+.headerMenuBtn span:nth-of-type(2) {
+	top: 50%;
+	transform: translateY(-50%);
+}
+.headerMenuBtn span:nth-of-type(3) {
+	bottom: 0;
+}
+.headerMenuBtn.headerMenuBtnOpen {
+	background-color: transparent;
+}
+.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(1) {
+	top: 50%;
+	transform: translateY(-50%) rotate(-45deg);
+}
+.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(2) {
+	opacity: 0;
+}
+.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(3) {
+	bottom: 50%;
+	transform: translateY(50%) rotate(45deg);
+}
+/*ハンバーガーメニュー*/
+#headerMenu {
+	/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+	position: fixed;
+	/*ナビのスタート位置と形状*/
+	top: 0;
+	right: max( -400px , -85%);
+	display: flex;
+	flex-direction: column;
+	z-index: 1000;
+	width: min( 380px , calc( 85% - 20px));
+	height: calc(100vh - var(--headerHeight));/*ナビの高さ*/
+	padding: var(--headerHeight) 10px 0 10px;
+	overflow: hidden;
+	background: var(--header-color_rgb);
+	backdrop-filter: var(--header-color_blur);
+	/*動き*/
+	transition: right .3s;
+}
+#headerMenuList {
+	/*ナビの数が増えた場合縦スクロール*/
+	position: relative;
+	width: 100%;
+	max-height: calc( 100vh - 150px);/*表示する高さ*/
+	overflow-y: auto;
+}
+/*ナビゲーション*/
+#headerMenuList ul {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+/*リストのレイアウト設定*/
+#headerMenuList li {
+	position: relative;
+	width: 100%;
+	margin: 10px 0;
+}
+#headerMenuList li a {
+	color: white;
+	font-size: 1.3em;
+	font-weight: 500;
+	letter-spacing: .1em;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.noticeContact {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.noticeContact li {
+	position: relative;
+	width: 100%;
+	margin: 10px 0;
+}
+.introduction{
+	color: #000000;
+	background-color: white;
+}
+
+.share {
+	position: fixed;
+	inset: calc(var(--headerHeight) + 10px) 0 auto auto;
+	z-index: 100;
+	width: calc(var(--headerHeight) - 10px);
+	aspect-ratio: 1/1;
+	padding: 0 5px 0 0;
+	border-radius: 20px 0 0 20px;
+	box-shadow: 0 0 15px -5px #000000;
+	background-color: white;
+}
+.shareMenuBtn {
+	position: absolute;
+	inset: 0 auto 0 auto;
+	z-index: 200;
+	height: 100%;
+	aspect-ratio: 1/1;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	font-size: 26px;
+}
+.shareMenu {
+	position: absolute;
+	inset: 0 -120px auto auto;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	z-index: 100;
+	width: calc(var(--headerHeight) - 20px);
+	padding: calc(var(--headerHeight) - 5px) 10px 10px 10px;
+	border-radius: 20px 0 0 20px;
+	box-shadow: 0 0 15px -5px #000000;
+	background-color: white;
+	transition: inset .3s;
+}
+.shareMenuOpen {
+	inset: 0 0 auto auto;
+}
+.shareSns {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1/1;
+	margin: auto;
+	border-radius: 10px;
+	font-size: 25px;
+	text-align: center;
+}
+.shareSns a {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+.shareX {
+	background-color: #000000;
+}
+.shareFacebook {
+	background-color: #1877f2;
+}
+.shareLine a {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1001/1000;
+}
+
+.main {
+	width: calc( 100% - 40px);
+	padding: 10px 20px;
+	margin: 0 0 20px 0;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.breadcrumb {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	margin: 10px 0;
+}
+.breadcrumb li {
+	display: inline;/*横に並ぶように*/
+	list-style: none;
+	font-weight: bold;/*太字*/
+}
+.breadcrumb li:after {
+	content: "\f0da";
+	padding: 0 .2em;
+	color: silver;
+	/* ▶を表示*/
+	font-family: FontAwesome;
+}
+.breadcrumb li:last-child:after {
+	content: "";
+}
+.breadcrumb li a {
+	color: #888888;
+	text-decoration: none;
+}
+.breadcrumb li:first-child a:before {
+	content: "\f015";
+	color: var(--header-color);
+	font-size: 1.1em;
+	font-weight: normal;
+	/*家アイコン*/	
+	font-family: FontAwesome;
+}
+
 
 /*スマホ*/
 @media screen and (max-width:640px) {
@@ -86,269 +351,8 @@ html {
 		--headerHeight: 60px;
 	}
 	body {
-		position: relative;
-		display: flex;
-		flex-flow: column;
 		min-height: calc( 100vh - var(--headerHeight));
 		padding: var(--headerHeight) 0 0 0;
-		margin: 0;
-		background-color: var(--body-color);
-		font-size: 16px;
-		font-family: var(--base-fonts);
-	}
-	.header {
-		position: absolute;
-		top: 0;
-		width: 100%;
-		height: var(--headerHeight);
-		padding: 0;
-		background-color: var(--header-color);
-		color: white;
-	}
-	.siteLogo {
-		display: block;
-		width: fit-content;
-		height: var(--headerHeight);
-		margin: auto;
-	}
-	.siteLogo img {
-		width: auto;
-		height: 100%;
-	}
-	/*アクティブクラスがついたら位置を0に*/
-	#headerMenu.headerMenuOpen {
-		right: 0;
-	}
-	/*ボタンのためのCSS*/
-	.headerMenuBtn {
-		position: fixed;
-		inset: 5px 5px auto auto;
-		display: block;
-		z-index: 1500;
-		height: calc(var(--headerHeight) - 10px);
-		aspect-ratio: 1/1;
-		padding: 0;
-		border: none;
-		border-radius: 50%;
-		background-color: var(--header-color);
-		cursor: pointer;
-		transition: background-color .5s;
-	}
-	.lineBox {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate( -50% , -50%);
-		width: 50%;
-		height: 50%;
-	}
-	/*×に変化*/
-	.headerMenuBtn span {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 12%;
-		margin: auto;
-		background-color: white;
-		transition: all .3s;
-	}
-	.headerMenuBtn span:nth-of-type(1) {
-		top: 0;
-	}
-	.headerMenuBtn span:nth-of-type(2) {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	.headerMenuBtn span:nth-of-type(3) {
-		bottom: 0;
-	}
-	.headerMenuBtn.headerMenuBtnOpen {
-		background-color: transparent;
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(1) {
-		top: 50%;
-		transform: translateY(-50%) rotate(-45deg);
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(2) {
-		opacity: 0;
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(3) {
-		bottom: 50%;
-		transform: translateY(50%) rotate(45deg);
-	}
-	/*ハンバーガーメニュー*/
-	#headerMenu {
-		/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
-		position: fixed;
-		/*ナビのスタート位置と形状*/
-		top: 0;
-		right: max( -400px , -85%);
-		bottom: 0;/*ナビの高さ*/
-		display: flex;
-		flex-direction: column;
-		z-index: 1000;
-		width: min( 380px , calc( 85% - 20px));
-		padding: var(--headerHeight) 10px 0 10px;
-		overflow: hidden;
-		background: var(--header-color_rgb);
-		backdrop-filter: var(--header-color_blur);
-		/*動き*/
-		transition: right .3s;
-	}
-	#headerMenuList {
-		/*ナビの数が増えた場合縦スクロール*/
-		position: relative;
-		width: 100%;
-		max-height: calc( 100vh - 150px);/*表示する高さ*/
-		overflow-y: auto;
-	}
-	/*ナビゲーション*/
-	#headerMenuList ul {
-		list-style: none;
-		width: 100%;
-		padding: 0;
-		margin: 0;
-	}
-	/*リストのレイアウト設定*/
-	#headerMenuList li {
-		position: relative;
-		width: 100%;
-		margin: 10px 0;
-	}
-	#headerMenuList li a {
-		color: white;
-		font-size: 1.3em;
-		font-weight: 500;
-		letter-spacing: .1em;
-		text-decoration: none;
-		white-space: nowrap;
-	}
-	.noticeContact {
-		list-style: none;
-		width: 100%;
-		padding: 0;
-		margin: 0;
-	}
-	.noticeContact li {
-		position: relative;
-		width: 100%;
-		margin: 10px 0;
-	}
-	.introduction{
-		color: #000000;
-		background-color: white;
-	}
-
-	.share {
-		position: fixed;
-		inset: calc(var(--headerHeight) + 10px) 0 auto auto;
-		z-index: 100;
-		width: calc(var(--headerHeight) - 10px);
-		aspect-ratio: 1/1;
-		padding: 0 5px 0 0;
-		border-radius: 20px 0 0 20px;
-		box-shadow: 0 0 15px -5px #000000;
-		background-color: white;
-	}
-	.shareMenuBtn {
-		position: absolute;
-		inset: 0 auto 0 auto;
-		z-index: 200;
-		height: 100%;
-		aspect-ratio: 1/1;
-		padding: 0;
-		border: 0;
-		background-color: transparent;
-		font-size: 26px;
-	}
-	.shareMenu {
-		position: absolute;
-		inset: 0 -120px auto auto;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		z-index: 100;
-		width: calc(var(--headerHeight) - 20px);
-		padding: calc(var(--headerHeight) - 5px) 10px 10px 10px;
-		border-radius: 20px 0 0 20px;
-		box-shadow: 0 0 15px -5px #000000;
-		background-color: white;
-		transition: inset .3s;
-	}
-	.shareMenuOpen {
-		inset: 0 0 auto auto;
-	}
-	.shareSns {
-		position: relative;
-		width: 100%;
-		aspect-ratio: 1/1;
-		margin: auto;
-		border-radius: 10px;
-		font-size: 25px;
-		text-align: center;
-	}
-	.shareSns a {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		display: block;
-		transform: translate(-50%, -50%);
-		color: white;
-	}
-	.shareX {
-		background-color: #000000;
-	}
-	.shareFacebook {
-		background-color: #1877f2;
-	}
-	.shareLine a {
-		display: block;
-		width: 100%;
-		aspect-ratio: 1001/1000;
-	}
-
-	.main {
-		width: calc( 100% - 20px );
-		padding: 10px 10px;
-		margin: 10px 0 20px 0;
-		border-radius: 20px;
-		background-color: white;
-	}
-
-	.breadcrumb {
-		list-style: none;
-		width: 100%;
-		padding: 0;
-		margin: 10px 0;
-	}
-	.breadcrumb li {
-		display: inline;/*横に並ぶように*/
-		list-style: none;
-		font-weight: bold;/*太字*/
-	}
-	.breadcrumb li:after {
-		content: "\f0da";
-		padding: 0 .2em;
-		color: silver;
-
-/* ▶を表示*/
-		font-family: FontAwesome;
-	}
-	.breadcrumb li:last-child:after {
-		content: "";
-	}
-	.breadcrumb li a {
-		color: #888888;
-		text-decoration: none;
-	}
-	.breadcrumb li:first-child a:before {
-		content: "\f015";
-		color: var(--header-color);
-		font-size: 1.1em;
-		font-weight: normal;
-
-/*家アイコン*/
-		font-family: FontAwesome;
 	}
 
 	.footer {
@@ -399,234 +403,13 @@ html {
 		--headerHeight: 70px;
 	}
 	body {
-		position: relative;
-		display: flex;
-		flex-flow: column;
 		min-height: calc( 100vh - var(--headerHeight));
 		padding: var(--headerHeight) 0 0 0;
-		margin: 0;
-		background-color: var(--body-color);
-		font-size: 20px;
-		font-family: var(--base-fonts);
-	}
-	.header {
-		position: absolute;
-		top: 0;
-		width: 100%;
-		height: var(--headerHeight);
-		padding: 0;
-		background-color: var(--header-color);
-		color: white;
-	}
-	.siteLogo {
-		display: block;
-		width: fit-content;
-		height: var(--headerHeight);
-		margin: auto;
-	}
-	.siteLogo img {
-		width: auto;
-		height: 100%;
-	}
-	/*アクティブクラスがついたら位置を0に*/
-	#headerMenu.headerMenuOpen {
-		right: 0;
-	}
-	/*ボタンのためのCSS*/
-	.headerMenuBtn {
-		position: fixed;
-		inset: 5px 5px auto auto;
-		display: block;
-		z-index: 1500;
-		height: calc(var(--headerHeight) - 10px);
-		aspect-ratio: 1/1;
-		border: none;
-		border-radius: 50%;
-		background-color: var(--header-color);
-		cursor: pointer;
-		transition: background-color .5s;
-	}
-	.lineBox {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate( -50% , -50%);
-		width: 50%;
-		height: 50%;
-	}
-	/*×に変化*/
-	.headerMenuBtn span {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 12%;
-		margin: auto;
-		background-color: white;
-		transition: all .3s;
-	}
-	.headerMenuBtn span:nth-of-type(1) {
-		top: 0;
-	}
-	.headerMenuBtn span:nth-of-type(2) {
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	.headerMenuBtn span:nth-of-type(3) {
-		bottom: 0;
-	}
-	.headerMenuBtn.headerMenuBtnOpen {
-		background-color: transparent;
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(1) {
-		top: 50%;
-		transform: translateY(-50%) rotate(-45deg);
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(2) {
-		opacity: 0;
-	}
-	.headerMenuBtn.headerMenuBtnOpen span:nth-of-type(3) {
-		bottom: 50%;
-		transform: translateY(50%) rotate(45deg);
-	}
-	/*ハンバーガーメニュー*/
-	#headerMenu {
-		/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
-		position: fixed;
-		/*ナビのスタート位置と形状*/
-		top: 0;
-		right: -400px;
-		flex-direction: column;
-		z-index: 1000;
-		width: 380px;
-		height: calc(100vh - var(--headerHeight));/*ナビの高さ*/
-		padding: var(--headerHeight) 10px 0 10px;
-		overflow: hidden;
-		background: var(--header-color_rgb);
-		backdrop-filter: var(--header-color_blur);
-		/*動き*/
-		transition: right .3s;
-	}
-	#headerMenuList {
-		position: relative;
-		width: calc( 100% - 5px);
-		max-height: calc( 100% - 60px);
-		overflow-y: auto;
-	}
-	/*ナビゲーション*/
-	#headerMenuList ul {
-		list-style: none;
-		width: 100%;
-		padding: 0;
-		margin: 0;
-	}
-	/*リストのレイアウト設定*/
-	#headerMenuList li {
-		position: relative;
-		width: 100%;
-		margin: 10px 0;
-	}
-	#headerMenuList li a {
-		color: white;
-		font-size: 1.3em;
-		font-weight: 500;
-		letter-spacing: .1em;
-		text-decoration: none;
-		white-space: nowrap;
-	}
-	.noticeContact {
-		list-style: none;
-		width: 100%;
-		padding: 0;
-		margin: auto 0;
-	}
-	.noticeContact li {
-		position: relative;
-		padding: 10px 20px;
-		margin: auto;
-	}
-	.introduction{
-		margin: 10px 20px;
-		color: #000000;
-		padding: 20px;
-		background-color: white;
-		border-radius: 30px;
-	}
-
-	.share {
-		position: fixed;
-		inset: calc(var(--headerHeight) + 10px) 0 auto auto;
-		z-index: 100;
-		height: calc(var(--headerHeight) - 10px);
-		aspect-ratio: 1/1;
-		padding: 0 5px 0 0;
-		border-radius: 20px 0 0 20px;
-		box-shadow: 0 0 15px -5px #000000;
-		background-color: white;
-	}
-	.shareMenuBtn {
-		position: absolute;
-		inset: 0 auto 0 auto;
-		z-index: 200;
-		height: 100%;
-		aspect-ratio: 1/1;
-		padding: 0;
-		border: 0;
-		background-color: transparent;
-		font-size: 31px;
-	}
-	.shareMenu {
-		position: absolute;
-		inset: 0 -120px auto auto;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		z-index: 100;
-		width: calc(var(--headerHeight) - 20px);
-		padding: calc(var(--headerHeight) - 10px) 10px 10px 10px;
-		border-radius: 20px 0 0 20px;
-		box-shadow: 0 0 15px -5px #000000;
-		background-color: white;
-		transition: inset .3s;
-	}
-	.shareMenuOpen {
-		inset: 0 0 auto auto;
-	}
-	.shareSns {
-		position: relative;
-		width: 100%;
-		aspect-ratio: 1/1;
-		margin: auto;
-		border-radius: 10px;
-		font-size: 31px;
-		line-height: 100%;
-		text-align: center;
-	}
-	.shareSns a {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		display: block;
-		transform: translate(-50%, -50%);
-		color: white;
-	}
-	.shareX {
-		background-color: #000000;
-	}
-	.shareFacebook {
-		background-color: #1877f2;
-	}
-	.shareLine a {
-		display: block;
-		width: 100%;
-		aspect-ratio: 1001/1000;
 	}
 
 	.main {
-		width: calc( 100% - 60px );
-		padding: 20px 30px;
-		margin: 20px 0 30px 0;
-		border-radius: 30px;
-		background-color: white;
+		width: calc( 100% - 60px);
+		margin: 0 10px 20px 10px;
 	}
 
 	.breadcrumb {
@@ -634,35 +417,6 @@ html {
 		width: 100%;
 		padding: 0;
 		margin: 20px 0;
-	}
-	.breadcrumb li {
-		display: inline;/*横に並ぶように*/
-		list-style: none;
-		font-weight: bold;/*太字*/
-	}
-	.breadcrumb li:after {
-		content: "\f0da";
-		padding: 0 .2em;
-		color: silver;
-
-/* ▶を表示*/
-		font-family: FontAwesome;
-	}
-	.breadcrumb li:last-child:after {
-		content: "";
-	}
-	.breadcrumb li a {
-		color: #888888;
-		text-decoration: none;
-	}
-	.breadcrumb li:first-child a:before {
-		content: "\f015";
-		color: var(--header-color);
-		font-size: 1.1em;
-		font-weight: normal;
-
-/*家アイコン*/
-		font-family: FontAwesome;
 	}
 
 	.footer {
@@ -709,30 +463,16 @@ html {
 		--shareLinkSize: 70px;
 	}
 	body {
-		position: relative;
-		display: flex;
-		flex-flow: column;
 		min-height: 100vh;
 		padding: 0 0 0 max(25%,400px);
-		margin: 0;
-		background-color: var(--body-color);
-		font-size: 20px;
-		line-height: 1.5;
-		font-family: var(--base-fonts);
-		letter-spacing: .05em;
 	}
 	.header {
 		position: fixed;
 		top: 0;
-		bottom: 0;
 		left: 0;
-		display: flex;
-		flex-direction: column;
-		width: calc(25% - 15px);
-		min-width: 385px;
+		width: max(385px ,calc(25% - 15px));
+		height: 100vh;
 		padding: 0 0 0 15px;
-		background-color: var(--header-color);
-		color: white;
 	}
 	.siteLogo {
 		position: relative;
@@ -745,6 +485,7 @@ html {
 	}
 	.siteLogo img {
 		width: 100%;
+		height: auto;
 	}
 	.headerMenuBtn {
 		display: none;
