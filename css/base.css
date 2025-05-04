@@ -3,7 +3,7 @@
 /*css変数の指定*/
 :root {
 	--header-color: #387bb2;
-	--header-color_rgb: rgba(56, 123, 178, .85);
+	--header-color_rgb: rgba(56, 123, 178, .70);
 	--header-color_blur: blur(10px);
 	--body-color: #dcdcdc;
 	--footer-color: #324557;
@@ -17,11 +17,11 @@
 /*すべての画面に共通するスタイル*/
 .progressBar {
 	position: sticky;
-	top: 0;
+	top: -2px;
 	z-index: 10;
 	width: 0;
-	height: 8px;
-	border-radius: 5px;
+	height: 10px;
+	border-radius: 0 0 8px 0;
 	background-color: rgba(143, 188, 143, 95%);
 }
 a {
@@ -150,7 +150,7 @@ html {
 		height: 12%;
 		margin: auto;
 		background-color: white;
-		transition: all .5s;
+		transition: all .3s;
 	}
 	.headerMenuBtn span:nth-of-type(1) {
 		top: 0;
@@ -182,18 +182,19 @@ html {
 		position: fixed;
 		/*ナビのスタート位置と形状*/
 		top: 0;
-		right: -80%;
+		right: max( -350px , -90%);
 		bottom: 0;/*ナビの高さ*/
 		display: flex;
 		flex-direction: column;
 		z-index: 1000;
-		width: calc( 70% - 20px);
-		padding: var(--headerHeight) 15px 0 15px;
+		width: min( 330px , calc( 90% - 20px));
+		max-width: 300px;
+		padding: var(--headerHeight) 10px 0 10px;
 		overflow: hidden;
 		background: var(--header-color_rgb);
 		backdrop-filter: var(--header-color_blur);
 		/*動き*/
-		transition: right .5s;
+		transition: right .3s;
 	}
 	#headerMenuList {
 		/*ナビの数が増えた場合縦スクロール*/
@@ -462,7 +463,7 @@ html {
 		height: 12%;
 		margin: auto;
 		background-color: white;
-		transition: all .5s;
+		transition: all .3s;
 	}
 	.headerMenuBtn span:nth-of-type(1) {
 		top: 0;
@@ -494,22 +495,17 @@ html {
 		position: fixed;
 		/*ナビのスタート位置と形状*/
 		top: 0;
-		right: -80%;
+		right: -350px;
 		flex-direction: column;
 		z-index: 1000;
-		width: 300px;
-		height: min( 740px , calc(100vh - var(--headerHeight)));/*ナビの高さ*/
+		width: 320px;
+		height: calc(100vh - var(--headerHeight));/*ナビの高さ*/
 		padding: var(--headerHeight) 15px 0 15px;
 		overflow: hidden;
 		background: var(--header-color_rgb);
 		backdrop-filter: var(--header-color_blur);
 		/*動き*/
-		transition: right .5s;
-	}
-	@media screen and (min-height: 800px) {
-		#headerMenu {
-			border-radius: 0 0 0 30px;
-		}
+		transition: right .3s;
 	}
 	#headerMenuList {
 		position: relative;
