@@ -182,13 +182,12 @@ html {
 		position: fixed;
 		/*ナビのスタート位置と形状*/
 		top: 0;
-		right: max( -350px , -90%);
+		right: max( -400px , -85%);
 		bottom: 0;/*ナビの高さ*/
 		display: flex;
 		flex-direction: column;
 		z-index: 1000;
-		width: min( 330px , calc( 90% - 20px));
-		max-width: 300px;
+		width: min( 380px , calc( 85% - 20px));
 		padding: var(--headerHeight) 10px 0 10px;
 		overflow: hidden;
 		background: var(--header-color_rgb);
@@ -495,12 +494,12 @@ html {
 		position: fixed;
 		/*ナビのスタート位置と形状*/
 		top: 0;
-		right: -350px;
+		right: -400px;
 		flex-direction: column;
 		z-index: 1000;
-		width: 320px;
+		width: 380px;
 		height: calc(100vh - var(--headerHeight));/*ナビの高さ*/
-		padding: var(--headerHeight) 15px 0 15px;
+		padding: var(--headerHeight) 10px 0 10px;
 		overflow: hidden;
 		background: var(--header-color_rgb);
 		backdrop-filter: var(--header-color_blur);
