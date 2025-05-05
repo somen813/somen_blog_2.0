@@ -343,25 +343,11 @@ body {
 	/*家アイコン*/	
 	font-family: FontAwesome;
 }
-	.footer {
-		padding: 10px calc(var(--headerHeight) - 5px) 10px 3%;
-		background-color: var(--footer-color);
-		color: white;
-	}
 
-
-
-.scroll-top {
-	position: fixed;
-	inset: auto 5px 5px auto;
-	display: block;
-	aspect-ratio: 1/1;
-	height: calc(var(--headerHeight) - 10px);
-	margin: auto 0;
+.footer {
+	padding: 10px calc(var(--headerHeight) - 5px) 10px 3%;
 	background-color: var(--footer-color);
 	color: white;
-	font-size: 27px;
-	text-align: center;
 }
 .footerTitle {
 	margin: auto;
@@ -384,6 +370,19 @@ body {
 }
 .site-map a {
 	color: white;
+}
+
+.scroll-top {
+	position: fixed;
+	inset: auto 5px 5px auto;
+	display: block;
+	aspect-ratio: 1/1;
+	height: calc(var(--headerHeight) - 10px);
+	margin: auto 0;
+	background-color: var(--footer-color);
+	color: white;
+	font-size: 27px;
+	text-align: center;
 }
 
 /*スマホ*/
