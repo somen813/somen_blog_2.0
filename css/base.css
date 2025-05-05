@@ -343,7 +343,48 @@ body {
 	/*家アイコン*/	
 	font-family: FontAwesome;
 }
+	.footer {
+		padding: 10px calc(var(--headerHeight) - 5px) 10px 3%;
+		background-color: var(--footer-color);
+		color: white;
+	}
 
+
+
+.scroll-top {
+	position: fixed;
+	inset: auto 5px 5px auto;
+	display: block;
+	aspect-ratio: 1/1;
+	height: calc(var(--headerHeight) - 10px);
+	margin: auto 0;
+	background-color: var(--footer-color);
+	color: white;
+	font-size: 27px;
+	text-align: center;
+}
+.footerTitle {
+	margin: auto;
+	width: 200px;
+	height: auto;
+}
+.site-map {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+}
+.site-map li {
+	flex-grow: 1;
+	width: 30%;
+	margin: 10px 0;
+}
+.site-map li:nth-child(n+4) {
+	width: auto;
+}
+.site-map a {
+	color: white;
+}
 
 /*スマホ*/
 @media screen and (max-width:640px) {
@@ -355,46 +396,6 @@ body {
 		padding: var(--headerHeight) 0 0 0;
 	}
 
-	.footer {
-		padding: 10px 70px 10px 3%;
-		background-color: var(--footer-color);
-		color: white;
-	}
-	.footerTitle {
-		width: 200px;
-		margin: 0;
-	}
-	.site-map {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0 0 0 10px;
-		margin: 0;
-	}
-	.site-map li {
-		flex-grow: 1;
-		width: 30%;
-		margin: 10px 0;
-	}
-	.site-map li:nth-child(n+4) {
-		width: auto;
-	}
-	.site-map a {
-		color: white;
-	}
-	.scroll-top {
-		position: fixed;
-		right: 20px;
-		bottom: 20px;
-		display: block;
-		width: 50px;
-		height: 50px;
-		background-color: var(--footer-color);
-		color: white;
-		font-size: 27px;
-		line-height: 50px;
-		text-align: center;
-	}
 }
 
 /*タブレット*/
@@ -417,43 +418,6 @@ body {
 		width: 100%;
 		padding: 0;
 		margin: 20px 0;
-	}
-
-	.footer {
-		padding: 10px 105px  10px 3% ;
-		background-color: var(--footer-color);
-		color: white;
-	}
-	.footerTitle {
-		margin: auto;
-		width: 200px;
-		height: auto;
-	}
-	.site-map {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0;
-	}
-	.site-map li {
-		flex: 1;
-		margin: 10px 0;
-	}
-	.site-map a {
-		color: white;
-	}
-	.scroll-top {
-		position: fixed;
-		right: 35px;
-		bottom: 35px;
-		display: block;
-		width: 70px;
-		height: 70px;
-		background-color: var(--footer-color);
-		color: white;
-		font-size: 30px;
-		line-height: 70px;
-		text-align: center;
 	}
 }
 
