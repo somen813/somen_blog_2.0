@@ -251,6 +251,7 @@ body {
 	border: 0;
 	background-color: transparent;
 	font-size: 26px;
+	cursor: pointer;
 }
 .shareMenu {
 	position: absolute;
