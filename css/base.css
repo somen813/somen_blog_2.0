@@ -442,6 +442,7 @@ body {
 	}
 	#headerMenu {
 		position: relative;
+		right: 0;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -458,7 +459,7 @@ body {
 		scrollbar-color: #1e384e transparent;
 	}
 	#headerMenuList:hover {
-		width: calc( 100% - 5px );
+		width: calc( 100% - 15px );
 	}
 	#headerMenuList ul {
 		list-style: none;
